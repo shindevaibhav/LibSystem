@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-09-18
+  slot_start: 2016-09-18 14:51:27
+
+two:
+  date: 2016-09-18
+  slot_start: 2016-09-18 14:51:27
