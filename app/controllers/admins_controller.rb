@@ -1,15 +1,17 @@
 class AdminsController < ApplicationController
-  before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  before_action :session_valid
 
   # GET /admins
   # GET /admins.json
   def index
-    @admins = Admin.all
+    puts @logged_admin
+    @logged_admin = Admin.find(session[:admin_id])
   end
 
   # GET /admins/1
   # GET /admins/1.json
   def show
+    @admin = Admin.find(session[:admin_id])
   end
 
   # GET /admins/new
@@ -19,6 +21,7 @@ class AdminsController < ApplicationController
 
   # GET /admins/1/edit
   def edit
+    @admin = Admin.find(session[:admin_id])
   end
 
   # POST /admins
@@ -40,6 +43,7 @@ class AdminsController < ApplicationController
   # PATCH/PUT /admins/1
   # PATCH/PUT /admins/1.json
   def update
+    @admin = Admin.find(session[:admin_id])
     respond_to do |format|
       if @admin.update(admin_params)
         format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
@@ -54,17 +58,25 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
+    @admin = Admin.find(session[:admin_id])
     @admin.destroy
     respond_to do |format|
-      format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
+      format.html { redirect_to admin_list_path, notice: 'Admin was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
+  def admin_list
+    @admins=Admin.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_admin
-      @admin = Admin.find(params[:id])
+    def session_valid
+      unless admin_logged_in?
+        flash[:error] = "Please log in as Admin to view this page"
+        redirect_to admin_login_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

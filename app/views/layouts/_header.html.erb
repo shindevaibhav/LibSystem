@@ -15,6 +15,7 @@
         <% if admin_logged_in? %>
             <!-- p> Admin logged in. </p -->
             <ul class="nav navbar-nav navbar-left">
+              <li><%= link_to "List all Admins", controller: 'admins', action: 'admin_list' %></li>
             </ul>
         <% end %>
         <% if member_logged_in? %>

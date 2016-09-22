@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'admins/admin_list'
+
   resources :bookings
   resources :rooms
   resources :admins
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   get 'helper_pages/contact'
   get 'sessions/new_admin'
   get 'sessions/new_member'
+
 
   root 'helper_pages#home'
   get 'about'    => 'helper_pages#about'
