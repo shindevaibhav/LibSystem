@@ -1,11 +1,27 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Library app", root_path, id: "logo" %>
+    <%= link_to "Library App", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",    root_path %></li>
-        <!-- li><!-- %= link_to "Log in", '#' % --><!-- /li -->
-      </ul>
-    </nav>
-  </div>
-</header>
+        <li><%= link_to "Home",   root_path %></li>
+        <% if member_logged_in? ||  admin_logged_in?%>
+            <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+            </ul>
+        <% else %>
+            <li><%= link_to "Admin Log in", admin_login_path %></li>
+            <li><%= link_to "Member Log in", member_login_path %></li>
+            </ul>
+        <% end %>
+        <% if admin_logged_in? %>
+            <!-- p> Admin logged in. </p -->
+            <ul class="nav navbar-nav navbar-left">
+            </ul>
+        <% end %>
+        <% if member_logged_in? %>
+            <!-- p> Member logged in. </p -->
+            <ul class="nav navbar-nav navbar-left">
+            </ul>
+        <% end %>
+      </nav>
+    </div>
+  </header>

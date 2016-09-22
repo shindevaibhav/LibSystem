@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :bookings
   resources :rooms
   resources :admins
@@ -8,11 +9,21 @@ Rails.application.routes.draw do
   get 'helper_pages/home'
   get 'helper_pages/about'
   get 'helper_pages/contact'
+  get 'sessions/new_admin'
+  get 'sessions/new_member'
 
   root 'helper_pages#home'
   get 'about'    => 'helper_pages#about'
   get 'contact'  => 'helper_pages#contact'
   get 'signup'   => 'members#new'
   post 'signup'  => 'members#create'
+
+  get  'admin_login'   => 'sessions#new_admin'
+  post 'admin_login'   => 'sessions#create_admin'
+
+  get  'member_login'  => 'sessions#new_member'
+  post 'member_login'  => 'sessions#create_member'
+
+  delete 'logout'      => 'sessions#destroy'
 
 end
