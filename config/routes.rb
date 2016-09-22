@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   get 'helper_pages/contact'
 
   root 'helper_pages#home'
-  get 'about'  => 'helper_pages#about'
+  get 'about'    => 'helper_pages#about'
   get 'contact'  => 'helper_pages#contact'
-  get 'signup' => 'members#new'
+  get 'signup'   => 'members#new'
+  post 'signup'  => 'members#create'
 
 end
