@@ -1,3 +1,7 @@
+Run rake db:seed
+    #To create a default root admin
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the
