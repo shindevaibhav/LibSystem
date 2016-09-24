@@ -21,6 +21,21 @@
     <%= f.datetime_select :slot_start %>
   </div>
 
+  <div class="field">
+    <%= f.label :room_number  %>
+    <%= select("booking", "room_id", Room.all.collect{ |r| [ r.room_number, r.id] }) %>
+  </div>
+
+
+
+    <% if admin_logged_in? %>
+    <div class="field">
+      <%= f.label :member %>
+      <%= select("booking", "member_id", Member.all.collect{ |m| [ m.name, m.id] }) %>
+    </div>
+  <% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

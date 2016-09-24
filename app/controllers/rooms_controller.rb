@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
-
+  include SessionsHelper
   # GET /rooms
   # GET /rooms.json
   def index
@@ -61,9 +61,24 @@ class RoomsController < ApplicationController
     end
   end
 
+  def is_member_viewing_this?
+    @memberViewing  = false
+    if(current_member)
+      @memberViewing  = true
+    end
+  end
+
+  def is_admin_viewing_this?
+    @adminViewing  = false
+    if(current_admin)
+      @adminViewing  = true
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room
+      logger.fatal "#{params}"
       @room = Room.find(params[:id])
     end
 

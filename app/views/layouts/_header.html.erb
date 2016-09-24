@@ -15,12 +15,19 @@
         <% if admin_logged_in? %>
             <!-- p> Admin logged in. </p -->
             <ul class="nav navbar-nav navbar-left">
-              <li><%= link_to "List all Admins", controller: 'admins', action: 'admin_list' %></li>
+              <!--<li><%= link_to "List all Admins", controller: 'admins', action: 'admin_list' %></li>-->
+              <li><%= link_to "List all Admins", admins_path %></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+              <li><%= link_to "Rooms", rooms_path %></li>
             </ul>
         <% end %>
         <% if member_logged_in? %>
             <!-- p> Member logged in. </p -->
             <ul class="nav navbar-nav navbar-left">
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+              <li><%= link_to "Rooms", rooms_path %></li>
             </ul>
         <% end %>
       </nav>

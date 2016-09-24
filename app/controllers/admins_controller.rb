@@ -6,6 +6,7 @@ class AdminsController < ApplicationController
   def index
     puts @logged_admin
     @logged_admin = Admin.find(session[:admin_id])
+    @admins = Admin.all
   end
 
   # GET /admins/1

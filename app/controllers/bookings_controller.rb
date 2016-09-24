@@ -1,9 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-
+  include SessionsHelper
   # GET /bookings
   # GET /bookings.json
   def index
+    set_search_params
     @bookings = Booking.all
   end
 
@@ -15,10 +16,18 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
+=begin
+    is_admin_viewing_this?
+    is_member_viewing_this?
+=end
   end
 
   # GET /bookings/1/edit
   def edit
+=begin
+    is_admin_viewing_this?
+    is_member_viewing_this?
+=end
   end
 
   # POST /bookings
@@ -61,14 +70,42 @@ class BookingsController < ApplicationController
     end
   end
 
+=begin
+  def is_member_viewing_this?
+    @memberViewing  = false
+    if(current_member != nil)
+      @memberViewing  = true
+    end
+  end
+
+  def is_admin_viewing_this?
+    @adminViewing  = false
+    debugger
+    if(current_admin != nil)
+      @adminViewing  = true
+    end
+  end
+=end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
       @booking = Booking.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_search_params
+      #logger.fatal "#{params[]}"
+      if(params[:room] != nil)
+        room_id = params[:room]
+
+        #@bookings = Booking.find_by(room_id: room_id)
+
+      end
+  end
+  # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
       params.require(:booking).permit(:date, :slot_start)
     end
 end
+
+
