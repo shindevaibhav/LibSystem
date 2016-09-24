@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     set_search_params
-    @bookings = Booking.all
+    #@bookings = Booking.all
   end
 
   # GET /bookings/1
@@ -15,7 +15,9 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
+
     @booking = Booking.new
+    #set_whos_booking
 =begin
     is_admin_viewing_this?
     is_member_viewing_this?
@@ -34,7 +36,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-
+    debugger
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
@@ -93,18 +95,31 @@ class BookingsController < ApplicationController
       @booking = Booking.find(params[:id])
     end
 
+=begin
+    def set_whos_booking
+      if member_logged_in?
+        debugger
+        @booking[:member_id] = current_member.id
+      end
+    end
+=end
     def set_search_params
       #logger.fatal "#{params[]}"
+      debugger
       if(params[:room] != nil)
         room_id = params[:room]
-
-        #@bookings = Booking.find_by(room_id: room_id)
+        @bookings = Booking.where(room_id: room_id)
+=begin
+        if(@bookings == nil)
+          @bookings = []
+        end
+=end
 
       end
   end
   # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:date, :slot_start)
+      params.require(:booking).permit(:date, :slot_start, :room_id, :member_id)
     end
 end
 

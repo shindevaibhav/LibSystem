@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label :date %>
-    <%= f.date_select :date %>
+    <%= f.date_select(:date, start_year: Date.today.year,selected: Date.today,end_year:(Date.today+ 7).year )%>
   </div>
 
   <div class="field">
     <%= f.label :slot_start %>
-    <%= f.datetime_select :slot_start %>
+    <%= f.time_select (:slot_start)%>
   </div>
 
   <div class="field">
@@ -34,6 +34,12 @@
       <%= select("booking", "member_id", Member.all.collect{ |m| [ m.name, m.id] }) %>
     </div>
   <% end %>
+    <% if member_logged_in? %>
+        <div class="field">
+          <%= f.label :member %>
+          <%= select("booking", "member_id",  [[ current_member.name, current_member.id]] ) %>
+        </div>
+    <% end %>
 
 
   <div class="actions">
