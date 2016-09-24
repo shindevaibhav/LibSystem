@@ -9,6 +9,7 @@ class Member < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true, length: { minimum: 6 }
+  has_many :bookings
 
   def authenticated?
     return false if remember_digest.nil?

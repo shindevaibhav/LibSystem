@@ -4,6 +4,8 @@ class CreateBookings < ActiveRecord::Migration[5.0]
       t.date :date
       t.datetime :slot_start
 
+      t.references :member
+      t.references :room
       t.timestamps
     end
   end

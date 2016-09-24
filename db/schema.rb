@@ -23,8 +23,12 @@ ActiveRecord::Schema.define(version: 20160918185127) do
   create_table "bookings", force: :cascade do |t|
     t.date     "date"
     t.datetime "slot_start"
+    t.integer  "member_id"
+    t.integer  "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_bookings_on_member_id"
+    t.index ["room_id"], name: "index_bookings_on_room_id"
   end
 
   create_table "members", force: :cascade do |t|
