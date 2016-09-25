@@ -4,15 +4,15 @@ class AdminsController < ApplicationController
   # GET /admins
   # GET /admins.json
   def index
-    puts @logged_admin
-    @logged_admin = Admin.find(session[:admin_id])
+    puts @admin
+    @admin = Admin.find(session[:admin_id])
     @admins = Admin.all
   end
 
   # GET /admins/1
   # GET /admins/1.json
   def show
-    @admin = Admin.find(session[:admin_id])
+    @admin= Admin.find(params[:id])
   end
 
   # GET /admins/new
@@ -41,20 +41,24 @@ class AdminsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /admins/1
-  # PATCH/PUT /admins/1.json
+  def delete_blank
+    delete_if{|k, v| v.empty? or v.instance_of?(Hash) && v.delete_blank.empty?}
+  end
+
+  # PATCH/PUT /admin/1
+  # PATCH/PUT /admin/1.json
   def update
     @admin = Admin.find(session[:admin_id])
     respond_to do |format|
-      if @admin.update(admin_params)
-        format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin }
-      else
-        format.html { render :edit }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
+        if @admin.update(admin_params)
+          format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
+          format.json { render :show, status: :ok, location: @admin }
+        else
+          format.html { render :edit }
+          format.json { render json: @admin.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
 
   # DELETE /admins/1
   # DELETE /admins/1.json
@@ -62,7 +66,7 @@ class AdminsController < ApplicationController
     @admin = Admin.find(session[:admin_id])
     @admin.destroy
     respond_to do |format|
-      format.html { redirect_to admin_list_path, notice: 'Admin was successfully destroyed.' }
+      format.html { redirect_to admin_admin_list_path, notice: 'Admin was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -82,6 +86,6 @@ class AdminsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_params
-      params.require(:admin).permit(:name, :email, :password_digest)
+      params.require(:admin).permit(:name, :email, :password, :password_confirmation)
     end
 end

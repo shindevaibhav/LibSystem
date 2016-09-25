@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'contact'  => 'helper_pages#contact'
   get 'signup'   => 'members#new'
   post 'signup'  => 'members#create'
+  get 'new_admin_create'   => 'admins#new'
+  post 'new_admin_create'  => 'admins#create'
 
   get  'admin_login'   => 'sessions#new_admin'
   post 'admin_login'   => 'sessions#create_admin'
