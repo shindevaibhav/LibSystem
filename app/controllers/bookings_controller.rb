@@ -54,15 +54,30 @@ class BookingsController < ApplicationController
 
   def search
 
-    #debugger
+    debugger
     #{"slot_start"=>"1000-01-01 00:00:00 -0456", "room_id"=>"1", "member_id"=>"1"}
     newparams = params[:params]
 
-    temp = Date.new(newparams["date(1i)"].to_i, newparams["date(2i)"].to_i,newparams["date(3i)"].to_i)
-    slot_start = DateTime.parse(newparams[:slot_start])
-    newparams[:slot_start] = slot_start.change(year:temp.year, day:temp.day, month:temp.month)
+    @bookings = query = Booking.all
 
-    @bookings = Booking.where(room_id: newparams[:room_id], slot_start: newparams[:slot_start] ,date: newparams[:date], member_id: newparams[:member_id])
+    temp = Date.new(newparams["date(1i)"].to_i, newparams["date(2i)"].to_i,newparams["date(3i)"].to_i)
+
+    if(newparams[:slot_start] != "all")
+      slot_start = DateTime.parse(newparams[:slot_start])
+      newparams[:slot_start] = slot_start.change(year:temp.year, day:temp.day, month:temp.month)
+      @bookings = query.where(slot_start: newparams[slot_start])
+    end
+    if(newparams[:room_id] != "all")
+      @bookings = query.where( room_id: newparams[:room_id] );
+    end
+    if(newparams[:member_id] != "all")
+      @bookings = query.where(member_id: newparams[:member_id]);
+    end
+
+
+
+
+    @bookings = @bookings.where(date: temp)
 
 =begin
 

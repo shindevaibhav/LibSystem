@@ -9,18 +9,18 @@
       <%= date_select("params","date", start_year: Date.today.year,selected: Date.today,end_year:(Date.today+ 7).year )%>
 
       <%= label_tag :slot %>
-      <%= select("params","slot_start",[["0-1",Time.new(1000, 1, 1, 00)],["1-2",Time.new(1000, 1, 1, 01)],["2-3",Time.new(1000, 1, 1, 02)],["3-4",Time.new(1000, 1, 1, 03)],["4-5",Time.new(1000, 1, 1, 04)],["5-6",Time.new(1000, 1, 1, 05)],["6-7",Time.new(1000, 1, 1, 06)],["7-8",Time.new(1000, 1, 1, 07)],["8-9",Time.new(1000, 1, 1, 8)],["9-10",Time.new(1000, 1, 1, 9)],["10-11",Time.new(1000, 1, 1, 10)],["11-12",Time.new(1000, 1, 1, 11)],["12-13",Time.new(1000, 1, 1, 12)],["13-14",Time.new(1000, 1, 1, 13)],["14-15",Time.new(1000, 1, 1, 14)],["15-16",Time.new(1000, 1, 1, 15)],["16-17",Time.new(1000, 1, 1, 16)],["17-18",Time.new(1000, 1, 1, 17)],["18-19",Time.new(1000, 1, 1, 18)],["19-20",Time.new(1000, 1, 1, 19)],["20-21",Time.new(1000, 1, 1, 20)],["21-22",Time.new(1000, 1, 1, 21)],["22-23",Time.new(1000, 1, 1, 22)],["23-00",Time.new(1000, 1, 1, 23)]])%>
+      <%= select("params","slot_start",[["all",:all]] + [["0-1",Time.new(1000, 1, 1, 00)],["1-2",Time.new(1000, 1, 1, 01)],["2-3",Time.new(1000, 1, 1, 02)],["3-4",Time.new(1000, 1, 1, 03)],["4-5",Time.new(1000, 1, 1, 04)],["5-6",Time.new(1000, 1, 1, 05)],["6-7",Time.new(1000, 1, 1, 06)],["7-8",Time.new(1000, 1, 1, 07)],["8-9",Time.new(1000, 1, 1, 8)],["9-10",Time.new(1000, 1, 1, 9)],["10-11",Time.new(1000, 1, 1, 10)],["11-12",Time.new(1000, 1, 1, 11)],["12-13",Time.new(1000, 1, 1, 12)],["13-14",Time.new(1000, 1, 1, 13)],["14-15",Time.new(1000, 1, 1, 14)],["15-16",Time.new(1000, 1, 1, 15)],["16-17",Time.new(1000, 1, 1, 16)],["17-18",Time.new(1000, 1, 1, 17)],["18-19",Time.new(1000, 1, 1, 18)],["19-20",Time.new(1000, 1, 1, 19)],["20-21",Time.new(1000, 1, 1, 20)],["21-22",Time.new(1000, 1, 1, 21)],["22-23",Time.new(1000, 1, 1, 22)],["23-00",Time.new(1000, 1, 1, 23)]])%>
 
       <%= label_tag :room_number  %>
-      <%= select("params", "room_id", Room.all.collect{ |r| [ r.room_number, r.id] }) %>
+      <%= select("params", "room_id", [["all",:all]] + Room.all.collect{ |r| [ r.room_number, r.id] }) %>
 
       <% if admin_logged_in? %>
           <%= label_tag :member %>
-          <%= select("params", "member_id", Member.all.collect{ |m| [ m.name, m.id] }) %>
+          <%= select("params", "member_id",[["all",:all]] +  Member.all.collect{ |m| [ m.name, m.id] }) %>
       <% end %>
       <% if member_logged_in? %>
           <%= label_tag :member %>
-          <%= select("params", "member_id",  [[ current_member.name, current_member.id]] ) %>
+          <%= select("params", "member_id", [["all",:all]] +  [[ current_member.name, current_member.id]] ) %>
       <% end %>
     </div>
       <%= submit_tag "Search" %>
