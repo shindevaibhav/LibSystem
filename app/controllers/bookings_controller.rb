@@ -54,7 +54,7 @@ class BookingsController < ApplicationController
 
   def search
 
-    debugger
+    #debugger
     #{"slot_start"=>"1000-01-01 00:00:00 -0456", "room_id"=>"1", "member_id"=>"1"}
     newparams = params[:params]
 
@@ -139,7 +139,7 @@ class BookingsController < ApplicationController
 =end
     def set_search_params
       #logger.fatal "#{params[]}"
-      debugger
+
       if(params[:room] != nil)
         room_id = params[:room]
         @bookings = Booking.where(room_id: room_id)

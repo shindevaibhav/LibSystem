@@ -11,20 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+    <table>
+  <tr>
+    <th><div class="field">
     <%= f.label :room_number %>
     <%= f.number_field :room_number %>
-  </div>
+  </div></th>
 
-  <div class="field">
+  <th><div class="field">
     <%= f.label :size %>
     <%= f.text_field :size %>
-  </div>
+  </div></th>
 
-  <div class="field">
+  <th><div class="field">
     <%= f.label :building %>
     <%= f.text_field :building %>
-  </div>
+  </div></th>
+  </tr>
+    </table>
 
   <div class="actions">
     <%= f.submit %>
