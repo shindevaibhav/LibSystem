@@ -1,19 +1,23 @@
 <p id="notice"><%= notice %></p>
+<table>
 
-<p>
-  <strong>Name:</strong>
-  <%= @admin.name %>
-</p>
+  <tr>
+    <th>Name:</strong></th>
+  <td><%= @admin.name %></td>
+  </tr>
 
-<p>
-  <strong>Email:</strong>
-  <%= @admin.email %>
-</p>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @admin.password_digest %>
-</p>
+  <tr>
+    <th>Email:</th>
+    <td><%= @admin.email %></td>
+    </tr>
 
-<%= link_to 'Edit', edit_admin_path(@admin) %> |
-<%= link_to 'Back', admins_path %>
+  <tr>
+    <th>Password digest:</th>
+    <td><%= @admin.password_digest %></td>
+</tr>
+</table>
+<div class="center"
+<%= link_to 'Edit', edit_admin_path(@admin), class: "btn btn-lg btn-primary" %> |
+<%= link_to 'Back', admins_path, class: "btn btn-lg btn-primary" %>
+</div>
