@@ -6,6 +6,7 @@
   <tr>
     <th>Name</th>
     <th>E-Mail Address</th>
+    <th></th>
   </tr>
   </thead>
 
@@ -19,9 +20,15 @@
         <% else %>
             <td><%= admin.name %></td>
             <td><%= admin.email %></td>
+            <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-lg btn-primary"%>
+            </td>
         <% end %>
       </tr>
   <% end %>
   </tbody>
 </table>
+<div class="center">
+  <%= link_to 'New Admin', new_admin_path , class: "btn btn-lg btn-primary" %>
+</div>
+<br>
 <br>
