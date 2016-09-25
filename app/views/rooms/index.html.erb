@@ -50,5 +50,7 @@
 
 <br>
 <div class="center">
-<%= link_to 'New Room', new_room_path, class: "btn btn-lg btn-primary" %>
+  <% if admin_logged_in? %>
+  <%= link_to 'New Room', new_room_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
 </div>
