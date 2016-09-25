@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 <table>
-
+  <h3 class="center"> Admin Details</h3>
   <tr>
-    <th>Name:</strong></th>
+    <th>Name:</th>
   <td><%= @admin.name %></td>
   </tr>
 
@@ -17,7 +17,7 @@
     <td><%= @admin.password_digest %></td>
 </tr>
 </table>
-<div class="center"
+<div class="center", padding="15px">
 <%= link_to 'Edit', edit_admin_path(@admin), class: "btn btn-lg btn-primary" %> |
 <%= link_to 'Back', admins_path, class: "btn btn-lg btn-primary" %>
 </div>
