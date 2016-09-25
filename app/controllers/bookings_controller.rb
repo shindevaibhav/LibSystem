@@ -36,6 +36,7 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
+    #Time.zone='Eastern Time (US & Canada)'
     @booking = Booking.new(booking_params)
     temp = @booking[:date]
     @booking[:slot_start] = @booking[:slot_start].change(year:temp.year, day:temp.day, month:temp.month)
@@ -53,7 +54,7 @@ class BookingsController < ApplicationController
 
   def search
 
-    #debugger
+    debugger
     #{"slot_start"=>"1000-01-01 00:00:00 -0456", "room_id"=>"1", "member_id"=>"1"}
     newparams = params[:params]
 
@@ -138,7 +139,7 @@ class BookingsController < ApplicationController
 =end
     def set_search_params
       #logger.fatal "#{params[]}"
-      #debugger
+      debugger
       if(params[:room] != nil)
         room_id = params[:room]
         @bookings = Booking.where(room_id: room_id)
@@ -147,10 +148,9 @@ class BookingsController < ApplicationController
           @bookings = []
         end
 =end
-
+      else
+        @bookings = Booking.all
       end
-    else
-      @bookings = Booking.all
   end
   # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
