@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => [:search]
   include SessionsHelper
   # GET /rooms
   # GET /rooms.json
@@ -35,6 +36,34 @@ class RoomsController < ApplicationController
         format.json { render json: @room.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def search
+
+    #debugger
+    #{"slot_start"=>"1000-01-01 00:00:00 -0456", "room_id"=>"1", "member_id"=>"1"}
+    newparams = params[:params]
+
+    @rooms = Room.where(room_number: newparams[:room_number], size: newparams[:size] ,building: newparams[:building])
+    if(@rooms == nil)
+      @rooms = nil
+    end
+
+=begin
+
+    key= params[:search][:keyword]
+    unfiltered_books = Book.lookup(key)
+    @books = unfiltered_books
+    unless params[:search][:checked_out] == "all"
+      @books = unfiltered_books.select {|b| b.checked_out.to_s == params[:search][:checked_out]}
+    end
+    @search_params = {}
+    @search_params[:keyword] = params[:search][:keyword]
+    @search_params[:checked_out] = params[:search][:checked_out]
+
+=end
+    #@bookings = Booking.all
+    render 'index'
   end
 
   # PATCH/PUT /rooms/1
