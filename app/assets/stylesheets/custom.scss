@@ -50,6 +50,12 @@ p {
   line-height: 1.7em;
 }
 
+table, th, td {
+  border: 1px solid black;
+  padding: 15px;
+
+}
+
 #logo {
   float: left;
   margin-right: 10px;
