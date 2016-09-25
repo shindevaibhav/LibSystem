@@ -52,8 +52,20 @@ p {
 
 table, th, td {
   border: 1px solid black;
-  padding: 15px;
+  padding: 30px;
+  align-content: center;
+  margin: auto;
 
+  background: white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+th{
+    background-color: lightblue;
+
+}
+tr{
+  align-content: center;
 }
 
 #logo {
