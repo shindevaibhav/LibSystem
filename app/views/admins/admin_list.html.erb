@@ -15,15 +15,10 @@
         <% if (admin.id == session[:admin_id] || admin.id == 1)%>
             <td><%= admin.name %></td>
             <td><%= admin.email %></td>
-
-
-            <td><%= link_to 'Edit', edit_admin_path(@admin), class: "btn btn-lg btn-primary"%></td>
             <td></td>
         <% else %>
             <td><%= admin.name %></td>
             <td><%= admin.email %></td>
-
-            <td><%= link_to 'Edit', edit_admin_path(admin), class: "btn btn-lg btn-primary"%>
         <% end %>
       </tr>
   <% end %>

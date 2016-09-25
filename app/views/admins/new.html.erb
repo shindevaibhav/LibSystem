@@ -1,5 +1,33 @@
-<h1>New Admin</h1>
+<h1>Create new Admin</h1>
 
-<%= render 'form', admin: @admin %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@admin, url: new_admin_create_path) do |f| %>
+        <% if @admin.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
 
-<%= link_to 'Back', admins_path, class: "btn btn-lg btn-primary" %>
+              <ul>
+                <% @admin.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label :password_confirmation, "Password Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
