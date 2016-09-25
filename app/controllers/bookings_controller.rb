@@ -116,6 +116,8 @@ class BookingsController < ApplicationController
 =end
 
       end
+    else
+      @bookings = Booking.all
   end
   # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
