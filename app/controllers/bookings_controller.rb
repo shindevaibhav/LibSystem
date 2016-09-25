@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-    debugger
+    #debugger
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
@@ -105,7 +105,7 @@ class BookingsController < ApplicationController
 =end
     def set_search_params
       #logger.fatal "#{params[]}"
-      debugger
+      #debugger
       if(params[:room] != nil)
         room_id = params[:room]
         @bookings = Booking.where(room_id: room_id)

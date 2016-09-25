@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin_login, only: [:index, :destroy]
+  before_action :require_member_login, only: [:index, :destroy, :new, :create]
 
   # GET /members
   # GET /members.json
@@ -10,6 +11,7 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
+    @member = Member.find(params[:id])
   end
 
   # GET /members/new
@@ -19,6 +21,7 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+    @member = Member.find(session[:member_id])
   end
 
   # POST /members
@@ -40,6 +43,7 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
   def update
+    @member=Member.find(session[:member_id])
     respond_to do |format|
       if @member.update(member_params)
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
@@ -62,6 +66,20 @@ class MembersController < ApplicationController
   end
 
   private
+
+    def require_admin_login
+      unless admin_logged_in?
+        flash[:error] = "Please Log in to view this page"
+        redirect_to admin_login_path
+      end
+    end
+
+    def require_member_login
+      unless member_logged_in?
+        flash[:error] = "Please Log in to view this page"
+        redirect_to member_login_path
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])

@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get 'helper_pages/contact'
   get 'sessions/new_admin'
   get 'sessions/new_member'
-
+  get 'members/edit'
+  get 'members/update'
 
   root 'helper_pages#home'
   get 'about'    => 'helper_pages#about'
