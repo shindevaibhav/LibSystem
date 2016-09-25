@@ -42,11 +42,22 @@ class RoomsController < ApplicationController
 
     #debugger
     #{"slot_start"=>"1000-01-01 00:00:00 -0456", "room_id"=>"1", "member_id"=>"1"}
+
     newparams = params[:params]
 
-    @rooms = Room.where(room_number: newparams[:room_number], size: newparams[:size] ,building: newparams[:building])
+    @rooms = query = Room.all
+    if(newparams[:room_number] != "all")
+      @rooms = query.where(room_number: newparams[:room_number])
+    end
+    if(newparams[:size] != "all")
+      @rooms = query.where( size: newparams[:size] );
+    end
+    if(newparams[:building] != "all")
+      @rooms = query.where(building: newparams[:building]);
+    end
+
     if(@rooms == nil)
-      @rooms = nil
+      @rooms = []
     end
 
 =begin
