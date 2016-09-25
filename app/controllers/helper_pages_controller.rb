@@ -1,5 +1,6 @@
 class HelperPagesController < ApplicationController
   def home
+
   end
 
   def about

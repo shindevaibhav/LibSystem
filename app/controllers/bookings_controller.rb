@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token, :only => [:search]
   include SessionsHelper
   # GET /bookings
   # GET /bookings.json
@@ -37,9 +36,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-    temp = @booking[:date]
-    @booking[:slot_start] = @booking[:slot_start].change(year:temp.year, day:temp.day, month:temp.month)
-    #debugger
+
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
@@ -50,36 +47,6 @@ class BookingsController < ApplicationController
       end
     end
   end
-
-  def search
-
-    #debugger
-    #{"slot_start"=>"1000-01-01 00:00:00 -0456", "room_id"=>"1", "member_id"=>"1"}
-    newparams = params[:params]
-
-    temp = Date.new(newparams["date(1i)"].to_i, newparams["date(2i)"].to_i,newparams["date(3i)"].to_i)
-    slot_start = DateTime.parse(newparams[:slot_start])
-    newparams[:slot_start] = slot_start.change(year:temp.year, day:temp.day, month:temp.month)
-
-    @bookings = Booking.where(room_id: newparams[:room_id], slot_start: newparams[:slot_start] ,date: newparams[:date], member_id: newparams[:member_id])
-
-=begin
-
-    key= params[:search][:keyword]
-    unfiltered_books = Book.lookup(key)
-    @books = unfiltered_books
-    unless params[:search][:checked_out] == "all"
-      @books = unfiltered_books.select {|b| b.checked_out.to_s == params[:search][:checked_out]}
-    end
-    @search_params = {}
-    @search_params[:keyword] = params[:search][:keyword]
-    @search_params[:checked_out] = params[:search][:checked_out]
-
-=end
-    #@bookings = Booking.all
-    render 'index'
-  end
-
 
   # PATCH/PUT /bookings/1
   # PATCH/PUT /bookings/1.json
@@ -138,7 +105,7 @@ class BookingsController < ApplicationController
 =end
     def set_search_params
       #logger.fatal "#{params[]}"
-      #debugger
+
       if(params[:room] != nil)
         room_id = params[:room]
         @bookings = Booking.where(room_id: room_id)
