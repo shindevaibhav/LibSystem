@@ -2,6 +2,22 @@
 
 <h1>Rooms</h1>
 
+<%= form_tag 'rooms/search', :method=>'post' do %>
+
+    <div class="field">
+        <%= label_tag :room_number %>
+        <%= select("params", "room_number", Room.all.collect{ |r| [ r.room_number, r.room_number] }) %>
+
+        <%= label_tag :size %>
+        <%= select("params", "size", Room.all.collect{ |r| [ r.size, r.size] }) %>
+
+        <%= label_tag :building %>
+        <%= select("params", "building", Room.all.collect{ |r| [ r.building, r.building] }) %>
+    </div>
+    <%= submit_tag "Search" %>
+<% end %>
+
+
 <table>
   <thead>
     <tr>
