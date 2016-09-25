@@ -28,6 +28,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 gem 'bootstrap-sass', '3.3.6'
 
+
+group :production do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pg'
+end
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
