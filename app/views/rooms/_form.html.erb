@@ -20,12 +20,12 @@
 
   <th><div class="field">
     <%= f.label :size %>
-    <%= f.text_field :size %>
+    <%= f.select :size,[['Small','small'],['Medium','medium'],['Large','large']] %>
   </div></th>
 
   <th><div class="field">
     <%= f.label :building %>
-    <%= f.text_field :building %>
+    <%= f.select :building,[['Hunt','Hunt'],['D.H.Hill','D.H.Hill']] %>
   </div></th>
   </tr>
     </table>
