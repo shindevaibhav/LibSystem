@@ -20,10 +20,10 @@
         <!--<td><%= admin.password_digest %></td>-->
         <td><%= link_to 'Show', admin %></td>
         <!--<% if (admin.name != "LibSystem Root" || admin.id != 1)  %>
-          <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
+          <td><%= link_to 'Edit', edit_admin_path(admin) , class: "btn btn-lg btn-primary"%></td>
         <% end %> -->
         <% if (admin.name != "LibSystem Root" && admin.id != 1) %>
-            <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-lg btn-primary"%></td>
         <% end %>
       </tr>
     <% end %>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Admin', new_admin_path %>
+<%= link_to 'New Admin', new_admin_path , class: "btn btn-lg btn-primary"%>
