@@ -9,4 +9,21 @@
 
     <%= link_to "Click here to signup!" ,signup_path, class: "btn btn-lg btn-primary" %>
   </div>
+
+<% end %>
+<% if admin_logged_in? %>
+    <div class="center jumbotron">
+      <h1>Welcome Admin</h1>
+          <h2><%= link_to "Edit Profile" ,  edit_admin_path(1), class: "btn btn-lg btn-primary"%></h2>
+          <h2><%= link_to "Manage Admins" , admins_path, class: "btn btn-lg btn-primary" %></h2>
+
+          <h2><%= link_to "Manage Rooms" , rooms_path, class: "btn btn-lg btn-primary"%></h2>
+    </div>
+<% end %>
+<% if member_logged_in? %>
+    <div class="center jumbotron">
+      <h1>Welcome to Library Room Booking System</h1>
+      <h2><%= link_to "Edit Profile" ,  edit_member_path(1), class: "btn btn-lg btn-primary"%></h2>
+      <h2><%= link_to "Manage Rooms" , rooms_path, class: "btn btn-lg btn-primary"%></h2>
+    </div>
 <% end %>
