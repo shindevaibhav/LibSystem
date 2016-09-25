@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   get 'helper_pages/contact'
   get 'sessions/new_admin'
   get 'sessions/new_member'
-  get 'members/edit'
-  get 'members/update'
 
   root 'helper_pages#home'
   get 'about'    => 'helper_pages#about'
@@ -31,5 +29,8 @@ Rails.application.routes.draw do
   post 'member_login'  => 'sessions#create_member'
 
   delete 'logout'      => 'sessions#destroy'
+
+  get 'members/edit'
+  get 'members/update'
 
 end

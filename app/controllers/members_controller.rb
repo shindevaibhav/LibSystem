@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   before_action :require_admin_login, only: [:index, :destroy]
-  before_action :require_member_login, only: [:index, :destroy, :new, :create]
+  before_action :require_member_login, only: [:index, :destroy]
 
   # GET /members
   # GET /members.json
