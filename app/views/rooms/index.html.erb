@@ -18,7 +18,7 @@
         <td><%= room.room_number %></td>
         <td><%= room.size %></td>
         <td><%= room.building %></td>
-        <td><%= link_to 'Show', room,class: "btn btn-lg btn-primary" %></td>
+        <td><%= link_to 'Show', room, class: "btn btn-lg btn-primary" %></td>
         <td><%= link_to 'Show Bookings', bookings_path({room:room}), class: "btn btn-lg btn-primary" %></td>
         <% if admin_logged_in? %>
           <td><%= link_to 'Edit', edit_room_path(room), class: "btn btn-lg btn-primary" %></td>
@@ -32,5 +32,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Room', new_room_path %>
+<div class="center">
+<%= link_to 'New Room', new_room_path, class: "btn btn-lg btn-primary" %>
+</div>
