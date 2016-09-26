@@ -1,5 +1,55 @@
 <h1>New Booking</h1>
 <!-- Booking -->
-<%= render 'form', booking: @booking %>
+<%= form_for(@booking) do |f| %>
+    <% if @booking.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+          <ul>
+            <% @booking.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :date %>
+      <!--Time.now + 5.days + 7.hours + 3.minutes + 14.seconds -->
+      <%= select("@booking","date",[[Date.today,Date.today],[Date.today + 1, Date.today + 1], [Date.today + 2, Date.today + 2], [Date.today + 3, Date.today + 3], [Date.today + 4, Date.today + 4], [Date.today + 5, Date.today + 5], [Date.today + 6, Date.today + 6], [Date.today + 7, Date.today + 7] ])%>
+      <!--<%= f.date_select(:date, start_year: Date.today.year,selected: Date.today,end_year:(Date.today+ 7).year )%>-->
+    </div>
+
+    <div class="field">
+      <%= f.label :slot %>
+      <%= select("@booking","slot_start",[["0-2",Time.new(1000, 1, 1, 00)],["2-4",Time.new(1000, 1, 1, 02)],["4-6",Time.new(1000, 1, 1, 04)],["6-8",Time.new(1000, 1, 1, 06)],["8-10",Time.new(1000, 1, 1, 8)],["10-12",Time.new(1000, 1, 1, 10)],["12-14",Time.new(1000, 1, 1, 12)],["14-16",Time.new(1000, 1, 1, 14)],["16-18",Time.new(1000, 1, 1, 16)],["18-20",Time.new(1000, 1, 1, 18)],["20-22",Time.new(1000, 1, 1, 20)],["22-00",Time.new(1000, 1, 1, 22)]])%>
+    </div>
+
+    <div class="field">
+      <%= f.label :room_number  %>
+      <%= select("@booking", "room_id", Room.all.collect{ |r| [ r.room_number, r.id] }) %>
+    </div>
+
+
+
+    <% if admin_logged_in? %>
+        <div class="field">
+          <%= f.label :member %>
+          <%= select("@booking", "member_id", Member.all.collect{ |m| [ m.name, m.id] }) %>
+        </div>
+    <% end %>
+    <% if member_logged_in? %>
+        <div class="field">
+          <%= f.label :member %>
+          <%= select("@booking", "member_id",  [[ current_member.name, current_member.id]] ) %>
+        </div>
+    <% end %>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
 
 <%= link_to 'Back', bookings_path, class: "btn btn-lg btn-primary" %>
