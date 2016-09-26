@@ -55,12 +55,14 @@ class RoomsController < ApplicationController
     if(newparams[:building] != "all")
       @rooms = query.where(building: newparams[:building]);
     end
+=begin
     if(newparams[:status] != "all")
       debugger
       rooms = Booking.where(slot_start: (Time.now - 3.hours)..Time.now).select(:room_id).distinct
       rooms = rooms.collect{|x| x.room_id}
       @rooms = query.where.not(building: rooms);
     end
+=end
 
 
     if(@rooms == nil)
