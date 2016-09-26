@@ -17,12 +17,12 @@
       <tr>
         <td><%= admin.name %></td>
         <td><%= admin.email %></td>
-        <td><%= link_to 'Show', admin, class: "btn btn-md btn-primary"%></td>
+        <td><%= link_to 'Show', admin, class: "btn btn-md btn-info"%></td>
         <!--<% if (admin.name != "LibSystem Root" || admin.id != 1)  %>
-          <td><%= link_to 'Edit', edit_admin_path(admin) , class: "btn btn-md btn-primary"%></td>
+          <td><%= link_to 'Edit', edit_admin_path(admin) , class: "btn btn-md btn-info"%></td>
         <% end %> -->
         <% if (admin.name != "LibSystem Root" && admin.id != 1) %>
-            <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-md btn-primary"%></td>
+            <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-md btn-info"%></td>
         <% end %>
       </tr>
     <% end %>
@@ -31,5 +31,5 @@
 
 <br>
 <div class="center">
-<%= link_to 'New Admin', new_admin_path , class: "btn btn-md btn-primary" %>
+<%= link_to 'New Admin', new_admin_path , class: "btn btn-md btn-info" %>
 </div>

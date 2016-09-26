@@ -20,7 +20,7 @@
         <% else %>
             <td><%= admin.name %></td>
             <td><%= admin.email %></td>
-            <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-md btn-primary"%>
+            <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-md btn-info"%>
             </td>
         <% end %>
       </tr>
@@ -28,7 +28,7 @@
   </tbody>
 </table>
 <div class="center">
-  <%= link_to 'New Admin', new_admin_path , class: "btn btn-md btn-primary" %>
+  <%= link_to 'New Admin', new_admin_path , class: "btn btn-md btn-info" %>
 </div>
 <br>
 <br>
