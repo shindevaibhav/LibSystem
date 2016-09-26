@@ -39,12 +39,12 @@
         <td><%= room.size %></td>
         <td><%= room.building %></td>
 
-        <td><%= link_to 'Show Bookings', bookings_path({room:room}), class: "btn btn-md btn-primary" %></td>
+        <td><%= link_to 'Show Bookings', bookings_path({room:room}), class: "btn btn-md btn-info" %></td>
         <% if admin_logged_in? %>
-          <td><%= link_to 'Edit', edit_room_path(room), class: "btn btn-md btn-primary" %></td>
+          <td><%= link_to 'Edit', edit_room_path(room), class: "btn btn-md btn-info" %></td>
         <% end %>
         <% if admin_logged_in? %>
-          <td><%= link_to 'Delete', room, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-primary" %></td>
+          <td><%= link_to 'Delete', room, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-info" %></td>
         <% end %>
       </tr>
     <% end %>
@@ -53,6 +53,6 @@
 <p></p>
 <% if admin_logged_in? %>
 <div class="center">
-  <%= link_to 'New Room', new_room_path, class: "btn btn-md btn-primary"%>
+  <%= link_to 'New Room', new_room_path, class: "btn btn-md btn-info"%>
 </div>
 <% end %>
