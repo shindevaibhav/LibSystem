@@ -154,16 +154,16 @@ class BookingsController < ApplicationController
 =end
     def set_search_params
       #logger.fatal "#{params[]}"
-
+      debugger
       if(params[:room] != nil)
         room_id = params[:room]
         @bookings = Booking.where(room_id: room_id)
-      else if(params[:memeber] != nil)
-          member_id = params[:member]
-          @bookings = Booking.where(member_id: member_id)
-           else
+      end
+      if(params[:member] != nil)
+            member_id = params[:member]
+            @bookings = Booking.where(member_id: member_id)
+      else
             @bookings = Booking.all
-           end
       end
   end
   # Never trust parameters from the scary internet, only allow the white list through.
