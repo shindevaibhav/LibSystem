@@ -14,6 +14,8 @@
       <%= label_tag :building %>
       <%= select("params", "building",  [["all",:all]] + Room.all.collect{ |r| [ r.building, r.building] }.uniq{|x| x} ) %>
 
+      <%= label_tag :status %>
+      <%= select("params", "status",  [["all",:all],["Available",:available]] ) %>
     </div>
     <%= submit_tag "Search" %>
 <% end %>

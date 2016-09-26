@@ -55,6 +55,11 @@ class RoomsController < ApplicationController
     if(newparams[:building] != "all")
       @rooms = query.where(building: newparams[:building]);
     end
+    if(newparams[:status] != "all")
+      rooms = Booking.where(slot_start: (Time.now - 2.hours)..Time.now).select(:room_id).distinct
+      @rooms = query.where.not(building: rooms);
+    end
+
 
     if(@rooms == nil)
       @rooms = []
