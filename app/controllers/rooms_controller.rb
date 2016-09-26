@@ -40,7 +40,7 @@ class RoomsController < ApplicationController
 
   def search
 
-    #debugger
+
     #{"slot_start"=>"1000-01-01 00:00:00 -0456", "room_id"=>"1", "member_id"=>"1"}
 
     newparams = params[:params]
@@ -56,7 +56,9 @@ class RoomsController < ApplicationController
       @rooms = query.where(building: newparams[:building]);
     end
     if(newparams[:status] != "all")
-      rooms = Booking.where(slot_start: (Time.now - 2.hours)..Time.now).select(:room_id).distinct
+      debugger
+      rooms = Booking.where(slot_start: (Time.now - 3.hours)..Time.now).select(:room_id).distinct
+      rooms = rooms.collect{|x| x.room_id}
       @rooms = query.where.not(building: rooms);
     end
 
