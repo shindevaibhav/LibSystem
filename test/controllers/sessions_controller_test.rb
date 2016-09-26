@@ -1,9 +1,29 @@
 require 'test_helper'
 
-class SessionsControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
-    get sessions_new_url
+class SessionsControllerTest < ActionController::TestCase
+  def setup
+    @controller = SessionsController.new
+  end
+
+
+  test "should get new member" do
+    get :new_member
     assert_response :success
+  end
+
+  test "should get new admin" do
+    get :new_admin
+    assert_response :success
+  end
+  
+  test "should destroy session" do
+    delete :destroy
+    assert_redirected_to root_path
+  end
+
+
+  def params
+    {:session => { :email => "Example@gmail.com",:password =>"password" }}
   end
 
 end

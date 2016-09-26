@@ -17,6 +17,8 @@
             <ul class="nav navbar-nav navbar-left">
               <li><%= link_to "List all Admins", controller: 'admins', action: 'admin_list' %></li>
               <li><%= link_to "Rooms", rooms_path %></li>
+              <li><%= link_to "Bookings", bookings_path %></li>
+              <li><%= link_to "Edit Profile",  edit_admin_path(1)%></li>
               <!-- %= link_to "List all Admins", admins_path %></li -->
             </ul>
         <% end %>
@@ -25,6 +27,8 @@
             <ul class="nav navbar-nav navbar-left">
               <li><%= link_to "Rooms", rooms_path %></li>
               <li><%= link_to "Bookings", bookings_path %></li>
+              <li><%= link_to "Edit Profile", edit_member_path(1)%></li>
+              <li><%= link_to "My Booking history", bookings_path({member:current_member.id})%></li>
             </ul>
         <% end %>
 
