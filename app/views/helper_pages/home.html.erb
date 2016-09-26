@@ -18,6 +18,7 @@
           <h2><%= link_to "Manage Admins", admins_path, class: "btn btn-lg btn-primary" %></h2>
           <h2><%= link_to "Manage Rooms", rooms_path, class: "btn btn-lg btn-primary"%></h2>
           <h2><%= link_to "Bookings", bookings_path, class: "btn btn-lg btn-primary"%></h2>
+          <h2><%= link_to "Manage Library Members", members_path, class: "btn btn-lg btn-primary"%></h2>
     </div>
 <% end %>
 <% if member_logged_in? %>
@@ -26,5 +27,6 @@
       <h2><%= link_to "Edit Profile",  edit_member_path(1), class: "btn btn-lg btn-primary"%></h2>
       <h2><%= link_to "View Rooms", rooms_path, class: "btn btn-lg btn-primary"%></h2>
       <h2><%= link_to "Bookings", bookings_path, class: "btn btn-lg btn-primary"%></h2>
+      <h2><%= link_to "View Library Members", members_path, class: "btn btn-lg btn-primary"%></h2>
     </div>
 <% end %>

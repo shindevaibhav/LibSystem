@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
-  before_action :require_admin_login, only: [:index, :destroy]
-  before_action :require_member_login, only: [:index, :destroy]
+  #before_action :require_member_login, only: [:index, :destroy]
+  #before_action :require_admin_login, only: [:index, :destroy]
 
   # GET /members
   # GET /members.json
@@ -21,7 +21,7 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
-    @member = Member.find(session[:member_id])
+    @member = Member.find(params[:id])
   end
 
   # POST /members
@@ -43,7 +43,7 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
   def update
-    @member=Member.find(session[:member_id])
+    @member=Member.find(params[:id])
     respond_to do |format|
       if @member.update(member_params)
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
@@ -58,6 +58,7 @@ class MembersController < ApplicationController
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
+    @member=Member.find(params[:id])
     @member.destroy
     respond_to do |format|
       format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }
