@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   get 'admins/admin_list'
   post 'bookings/search'  => 'bookings#search'
-  post 'rooms/search'  => 'rooms#search'
+  post '/rooms/search'  => 'rooms#search'
+  # get '/rooms/search'  => 'rooms#search'
 
   resources :bookings
   resources :rooms
