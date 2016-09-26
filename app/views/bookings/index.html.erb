@@ -49,8 +49,12 @@
         <td><%= booking.date %></td>
         <td><%= booking.slot_start %></td>
 
-        <td><% if(Time.current<booking.slot_start+1)%> <%= link_to 'Release', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-info" %><% end %></td>
-
+        <% if admin_logged_in? %>
+            <td><% if((Time.current<booking.slot_start+1))%> <%= link_to 'Release', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-info" %><% end %></td>
+            <% end %>
+      <% if member_logged_in? %>
+        <td><% if((Time.current<booking.slot_start+1) && (current_member.id==booking.member_id))%> <%= link_to 'Release', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-info" %><% end %></td>
+      <% end %>
       </tr>
     <% end %>
   </tbody>
