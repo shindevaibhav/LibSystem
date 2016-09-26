@@ -8,11 +8,12 @@
         <%= label_tag :room_number %>
         <%= select("params", "room_number",[["all",:all]] +  Room.all.collect{ |r| [ r.room_number, r.room_number] }) %>
 
-        <%= label_tag :size %>
-        <%= select("params", "size", [["all",:all]] +  Room.all.collect{ |r| [ r.size, r.size] }) %>
+      <%= label_tag :size %>
+      <%= select("params", "size", [["all",:all]] +  Room.all.collect{ |r| [ r.size, r.size] }.uniq{|x| x}) %>
 
-        <%= label_tag :building %>
-        <%= select("params", "building",  [["all",:all]] + Room.all.collect{ |r| [ r.building, r.building] } ) %>
+      <%= label_tag :building %>
+      <%= select("params", "building",  [["all",:all]] + Room.all.collect{ |r| [ r.building, r.building] }.uniq{|x| x} ) %>
+
     </div>
     <%= submit_tag "Search" %>
 <% end %>

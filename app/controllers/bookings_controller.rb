@@ -158,14 +158,14 @@ class BookingsController < ApplicationController
       if(params[:room] != nil)
         room_id = params[:room]
         @bookings = Booking.where(room_id: room_id)
-      end
-      if(params[:member] != nil)
+      else if(params[:member] != nil)
             member_id = params[:member]
             @bookings = Booking.where(member_id: member_id)
       else
             @bookings = Booking.all
       end
-  end
+      end
+     end
   # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
       params.require(:booking).permit(:date, :slot_start, :room_id, :member_id)
