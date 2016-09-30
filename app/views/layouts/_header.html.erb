@@ -16,6 +16,7 @@
             <!-- p> Admin logged in. </p -->
             <ul class="nav navbar-nav navbar-left">
               <li><%= link_to "List all Admins", controller: 'admins', action: 'admin_list' %></li>
+              <li><%= link_to "Manage Members", members_path %></li>
               <li><%= link_to "Rooms", rooms_path %></li>
               <li><%= link_to "Bookings", bookings_path %></li>
               <li><%= link_to "Edit Profile",  edit_admin_path(1)%></li>

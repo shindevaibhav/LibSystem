@@ -12,6 +12,13 @@
 
 <br>
 <br>
+<% if !admin_logged_in? %>
 <div class="center">
 <%= link_to "log in", member_login_path, class: "btn btn-md btn-info" %>
 </div>
+<%end%>
+<% if admin_logged_in? %>
+    <div class="center">
+      <%= link_to "back", members_path, class: "btn btn-md btn-info" %>
+    </div>
+<%end%>
