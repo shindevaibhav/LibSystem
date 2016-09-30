@@ -24,7 +24,7 @@
         <td><%= link_to 'Show', member, class: "btn btn-md btn-info" %></td>
         <% if admin_logged_in? %>
         <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-md btn-info" %></td>
-        <td><%= link_to 'Delete', member, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-md btn-info"%></td>
+        <td><%= link_to 'Delete', member, method: :delete, data: { confirm: 'All the bookings made by this member will also be lost. Are you sure? ' } ,class: "btn btn-md btn-info"%></td>
             <% end %>
       </tr>
     <% end %>

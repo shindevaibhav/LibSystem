@@ -47,7 +47,7 @@
           <td><%= link_to 'Edit', edit_room_path(room), class: "btn btn-md btn-info" %></td>
         <% end %>
         <% if admin_logged_in? %>
-          <td><%= link_to 'Delete', room, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-info" %></td>
+          <td><%= link_to 'Delete', room, method: :delete, data: { confirm: 'All the bookings for this room will also be lost. Are you sure?' }, class: "btn btn-md btn-info" %></td>
         <% end %>
       </tr>
     <% end %>
