@@ -23,7 +23,9 @@
           <%= select("params", "member_id", [["all",:all]] +  [[ current_member.name, current_member.id]] ) %>
       <% end %>
     </div>
-      <%= submit_tag "Search" %>
+      <%= submit_tag "Search" , class: "btn btn-info" %>
+    <br>
+    <br>
 <% end %>
 
 <br>

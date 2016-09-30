@@ -17,7 +17,9 @@
       <%= label_tag :status %>
       <%= select("params", "status",  [["all",:all],["Available",:available]] ) %>
     </div>
-    <%= submit_tag "Search" %>
+    <%= submit_tag "Search", class: "btn btn-info" %>
+    <br>
+    <br>
 <% end %>
 
 
