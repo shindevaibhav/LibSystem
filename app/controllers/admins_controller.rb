@@ -63,7 +63,7 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
-    @admin = Admin.find(session[:admin_id])
+    @admin = Admin.find(params[:id])
     @admin.destroy
     respond_to do |format|
       format.html { redirect_to admin_admin_list_path, notice: 'Admin was successfully destroyed.' }
