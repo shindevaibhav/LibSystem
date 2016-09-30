@@ -8,7 +8,7 @@
       <th>Name</th>
       <th>Email</th>
       <% if admin_logged_in? %>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
       <% else %>
       <th></th>
        <% end %>
@@ -22,10 +22,13 @@
         <td><%= member.email %></td>
 
         <td><%= link_to 'Show', member, class: "btn btn-md btn-info" %></td>
+
         <% if admin_logged_in? %>
-        <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-md btn-info" %></td>
+            <td><%= link_to 'Show Booking History', bookings_path({member:member}), class: "btn btn-md btn-info" %></td>
+            <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-md btn-info" %></td>
         <td><%= link_to 'Delete', member, method: :delete, data: { confirm: 'All the bookings made by this member will also be lost. Are you sure? ' } ,class: "btn btn-md btn-info"%></td>
             <% end %>
+
       </tr>
     <% end %>
   </tbody>
