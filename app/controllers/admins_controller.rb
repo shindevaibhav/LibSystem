@@ -66,7 +66,7 @@ class AdminsController < ApplicationController
     @admin = Admin.find(params[:id])
     @admin.destroy
     respond_to do |format|
-      format.html { redirect_to admin_admin_list_path, notice: 'Admin was successfully destroyed.' }
+      format.html { redirect_to "/admins/admin_list", notice: 'Admin was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
