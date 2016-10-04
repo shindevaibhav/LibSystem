@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post '/rooms/search'  => 'rooms#search'
   # get '/rooms/search'  => 'rooms#search'
 
+
+  get 'bookings/send_email'
+  post 'bookings/send_email'
   resources :bookings
   resources :rooms
   resources :admins

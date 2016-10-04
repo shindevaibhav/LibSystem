@@ -121,6 +121,18 @@ class BookingsController < ApplicationController
     end
   end
 
+  def send_email
+    bookingid = params[:bookingid]
+    emailid = params[:emailid]
+    @booking = Booking.find(bookingid)
+    NotificationMailer.send_mail(@booking, emailid).deliver
+    respond_to do |format|
+      format.html { redirect_to @booking, notice: 'Friend was successfully invited.' }
+      format.json { render :show, status: :created, location: @booking }
+
+    end
+  end
+
 =begin
   def is_member_viewing_this?
     @memberViewing  = false
@@ -168,7 +180,7 @@ class BookingsController < ApplicationController
      end
   # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:date, :slot_start, :room_id, :member_id)
+      params.require(:booking).permit(:date, :slot_start, :room_id, :member_id, :emailid)
     end
 end
 

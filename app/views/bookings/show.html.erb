@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
+<%= form_tag(bookings_send_email_path, :method => "get") do %>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @booking.date %>
-</p>
+    <p>
+      <strong>Date:</strong>
+      <%= @booking.date %>
+    </p>
 
-<p>
-  <strong>Slot start:</strong>
-  <%= @booking.slot_start %>
-</p>
+    <p>
+      <strong>Slot start:</strong>
+      <%= @booking.slot_start %>
+    </p>
 
-<%= link_to 'Edit', edit_booking_path(@booking), class: "btn btn-md btn-info" %> |
-<%= link_to 'Back', bookings_path, class: "btn btn-md btn-info" %>
+    <%= label_tag(:emailid, "Invite your friend by email") %>
+    <%= email_field_tag(:emailid) %>
+
+
+    <%= hidden_field_tag :bookingid, @booking.id %>
+    <%= submit_tag("Invite") %>
+    <%= link_to 'Edit', edit_booking_path(@booking), class: "btn btn-md btn-info" %> |
+    <%= link_to 'Back', bookings_path, class: "btn btn-md btn-info" %>
+
+<% end %>
