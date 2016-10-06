@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
 <%= form_tag(bookings_send_email_path, :method => "get") do %>
     <p id="notice"><%= notice %></p>
 
@@ -11,12 +15,19 @@
       <%= @booking.slot_start %>
     </p>
 
-    <%= label_tag(:emailid, "Invite your friend by email") %>
+    <%= label_tag(:emailid, "Invite your friend by E-Mail") %>
+      <a href="#">
+        <span class="glyphicon glyphicon-bullhorn" style="color:blue"></span>
+      </a>
+
     <%= email_field_tag(:emailid) %>
 
-
+    <br>
+    <br>
     <%= hidden_field_tag :bookingid, @booking.id %>
     <%= submit_tag("Invite") %>
+    <br>
+    <br>
     <%= link_to 'Edit', edit_booking_path(@booking), class: "btn btn-md btn-info" %> |
     <%= link_to 'Back', bookings_path, class: "btn btn-md btn-info" %>
 
