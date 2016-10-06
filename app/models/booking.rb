@@ -7,7 +7,7 @@ class Booking < ApplicationRecord
   validates :member_id, :presence=>true
 
 
-  validates :slot_start, uniqueness: {scope: [:room_id,:date,:member_id]}
+  validates :slot_start, uniqueness: {scope: [:room_id,:date]}
 
 
 end
